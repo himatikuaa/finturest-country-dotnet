@@ -1,6 +1,6 @@
 # Finturest Country API C# SDK
 
-Official C# SDK for the Finturest Country API — supports .NET Standard 2.0+ and all modern .NET versions.
+Official C# SDK for the Finturest Country API - supports .NET Standard 2.0+ and all modern .NET versions.
 
 [Finturest Country API](https://finturest.com/products/country-api)
 
